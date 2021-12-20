@@ -24,7 +24,7 @@ export default function Player () {
    */
   useEffect(() => {
     const initializeCastApi = function() {
-      console.log('debug initializeCastApi');
+      console.log('debug initializeCastApi', chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID);
       cast.framework.CastContext.getInstance().setOptions({
         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
       });
