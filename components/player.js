@@ -28,14 +28,15 @@ export default function Player () {
       cast.framework.CastContext.getInstance().setOptions({
         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
       });
-      const castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+      
+      var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
       console.log('debug castSession', castSession);
 
       var currentMediaURL = 'https://stream.mux.com/3taBcOqKMfNG029QjBCJMKLviq13OrV6S.m3u8'
       var contentType = 'application/vnd.apple.mpegurl';
       var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL, contentType);
       var request = new chrome.cast.media.LoadRequest(mediaInfo);
-      castSession.loadMedia(request);
+      castSession?.loadMedia(request);
     }
 
     console.log('debug setting __onGCastApiAvailable', typeof cast);
@@ -98,6 +99,9 @@ export default function Player () {
         }
         .mobile :global(media-control-bar) {
           width: 100%;
+        }
+        .wrapper :global(google-cast-launcher) {
+          width: 26px;
         }
         @media(min-width: 768px) {
           .mobile {
